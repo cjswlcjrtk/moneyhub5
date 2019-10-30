@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moneyhub.web.mappers.ClientMapper">
+    <resultMap type="com.moneyhub.web.domains.ClientDTO" id="client">
+        <id column="CID" property="cid"/>
+        <result column="PWD" property="pwd"/>
+    </resultMap>
+
+    <select id="selectClientId" resultMap="client">
+        select CID, PWD from client where CID like #{cid} and PWD like #{pwd}
+    </select>
+    <insert id="insertClientId">
+        insert into client (CID, PWD) values (
+            #{cid}, #{pwd}
+        )
+    </insert>
+
+</mapper>
